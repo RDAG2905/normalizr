@@ -1,0 +1,22 @@
+
+{{#if productos.length}}
+<div id="tableContainer"> 
+    <h2>Lista de Productos</h2>
+    <div >
+        <table class="table table-hover">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+            {{#each productos}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>${{this.precio}}</td>
+                <td style="text-align:center"><img width="50" src={{this.fotoUrl}} alt="not found" ></td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,36 @@
+
+body * {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+th{
+    border-color: black;
+    background-color: darkgrey;
+    min-width:200px;
+}
+
+td {
+    min-width:200px;
+    border-bottom: 1px solid gray;
+}
+
+#lista{
+    vertical-align: middle;
+}
+
+#tableContainer *{
+    margin-left: -20%;
+    margin-right: 20%;
+}
+
+.btn{
+    width:300px;
+    margin-left:200px;
+}
+
+.jumbotron{
+    border-radius: 4px;
+    padding-left:50px;
+    padding-right:50px;
+}
