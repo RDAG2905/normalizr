@@ -5,10 +5,11 @@ const mensajesCollection = 'Mensajes';
 
 
 
-/*const publicacionSchema = new mongoose.Schema({
+const publicacionSchema = new mongoose.Schema({
     fechayHora: {type: Date,default: Date.now},
-    mensaje: {type: String}
-});*/
+    texto: {type: String},
+    id: {type: String,max: 50}
+});
 
 
 const autorSchema = new mongoose.Schema({
@@ -23,9 +24,15 @@ const autorSchema = new mongoose.Schema({
 
 const mensajeSchema = new mongoose.Schema({
     autor: autorSchema,
+    publicacion : publicacionSchema
+})
+
+/* 
+const mensajeSchema = new mongoose.Schema({
+    autor: autorSchema,
     texto : {type: String, max: 100},
     fechayHora: {type: Date,default: Date.now}
 })
-
+*/
 
 module.exports = mongoose.model(mensajesCollection, mensajeSchema);

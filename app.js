@@ -33,7 +33,8 @@ app.set("views","./public/plantillas")
 app.set("view engine","hbs")
 app.use('/api',routerProductos)
 
-const autorSchema = new schema.Entity('autores')
+const autorSchema = new schema.Entity('autor')
+const publicacionSchema = new schema.Entity('publicacion')
 //const autorSchema = new schema.Entity('autor',{},{idAttribute: 'email'})
 //const publicacionSchema = new schema.Entity('publicaciones')
 
@@ -42,22 +43,15 @@ const autorSchema = new schema.Entity('autores')
   )*/
 
 const mensajeSchema = new schema.Entity('mensajes',{
-  autor : autorSchema
+  autor : [autorSchema],
+  publicacion : [publicacionSchema]
 })
 
-//const chatSchema = new schema.Entity('chats',{
-// chats:[mensajeSchema]
-//})
+/*const chatSchema = new schema.Entity('chats',{
+ chats:[mensajeSchema]
+})*/
 
 const chatSchema = new schema.Values(mensajeSchema)
-/*{
-    autores : [mensajeSchema]
-  }*/
-/*const chatSchema = new schema.Entity('chats',{
-    autores : [mensajeSchema]
-  })*/
-
-
 
     io.on('connection', async (socket) => {  
             let dao = new daoMensajes()                                  

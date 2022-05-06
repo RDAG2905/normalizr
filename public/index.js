@@ -1,10 +1,4 @@
 
-/*const normalizr  = require("normalizr")
-const normalize = normalizr.normalize
-const denormalize = normalizr.denormalize
-const schema = normalizr.schema*/ 
-
-//const { schema } = require("../models/Mensajes")
 
 const socket = io.connect()
 
@@ -59,8 +53,8 @@ function makeHtmlList(mensajes) {
       let msg = (`
           <tr style='width:350px;height:30px;'>
               <td style="color:blue;width:50px;">${mensaje.autor.id}</td>
-              <td style="color:brown;width:50px;text-align:left">[${mensaje.fechayHora}]:</td>
-              <td style="color:green;text-align:left">${mensaje.texto}</td>
+              <td style="color:brown;width:50px;text-align:left">[${mensaje.publicacion.fechayHora}]:</td>
+              <td style="color:green;text-align:left">${mensaje.publicacion.texto}</td>
           </tr>
       `)
       msg.replace(',','')
@@ -95,12 +89,21 @@ const enviarChat=()=>{
     alias:alias,
     avatar:avatar
   }
- 
+  
+  let publicacion ={
+    texto:mensaje,
+    id:email
+  }
+  let chat = {
+    autor:autor,
+    publicacion:publicacion
+}
+ /* 
   let chat = {
       autor:autor,
       texto:mensaje
   }
-  
+  */
   socket.emit("chateando",chat)
 }
  
