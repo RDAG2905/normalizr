@@ -3,76 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="index.js"></script>
+  <script src="index.js?v=1"></script>
+  <script src = "https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
   <title>Document</title>
 </head>
 <body>
   <div id="contenedorPrincipal">
-    <h2 class="text-primary">Ingrese Producto</h2>
-    </br>
-    <div class="row">
-      <div class="col-xs-2">
-        <label >Nombre :</label>
-      </div>
-      <div class="col-xs-6">
-        <input type="text" id="nombre" class="form-control input-xs">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">
-        <label for="">Precio:</label>
-      </div>
-      <div class="col-xs-6">
-        <input type="text" id="precio" class="form-control input-xs">
-      </div>
-    </div>
     
-    <div class="row">
-      <div class="col-xs-2">
-        <label for="">Foto Url:</label>
-      </div>
-      <div class="col-xs-6">
-        <input type="text" id="fotoUrl" class="form-control input-xs">
-      </div>
-    </div>
-    
-    
-  </br>
-
-    <button onclick="Enviar()" class="btn btn-primary">Enviar</button>
-        </br>
-        </br>
-    <div id="lista"></div>
-    
-</div>
  <br>
- <div class="jumbotron">
+ <div class="jumbotron" >
   <h2>Centro de Mensajes</h1>
   <br>
-
-  <input type="text" id="inputUsername" class="form-control input-xs" placeholder="Ingresá tu email" onblur="verificar()">
+  
+  <input type="hidden" id="idArray">
+  <input type="text" id="emailAutor" class="form-control input-xs" placeholder="email" onblur="verificar()">
   <div style="display:none" class="alert-danger" id="showAlert">Formato de Email inválido.</div>
-  <hr>
+  
+  <input id="nombreAutor" type="text" class="form-control input-xs" placeholder="nombre">
+  <input id="apellidoAutor" type="text" class="form-control input-xs" placeholder="apellido">
+  <input id="edadAutor" type="text" class="form-control input-xs" placeholder="edad">
+  <input id="aliasAutor" type="text" class="form-control input-xs" placeholder="alias">
+  <input id="avatarAutor" type="text" class="form-control input-xs" placeholder="avatar">
+  
 
-  <table id="mensajes" style="margin-left:10%;margin-right:10% ;"></table>
-<br>
-  <form id="formPublicarMensaje"  autocomplete="off">
-      <div class="row">
-        <div class="col-xs-6">
-          <input disabled id="inputMensaje" type="text" class="form-control input-xs"
-          placeholder="Ingresá un mensaje..." oninput="validarMensaje()">
-        </div>
-        <div class="col-xs-3">
-          <button disabled id="btnEnviar" type="button" class="btn btn-primary" onclick="enviarChat()">Enviar</button>
-        </div>
-         
+  <table id="mensajes" ></table>
+
+    <br>
+      <form id="formPublicarMensaje"  autocomplete="off">
           
-      </div>
-  </form>
+              <input disabled id="inputMensaje" type="text" class="form-control input-xs"
+              placeholder="Ingresá un mensaje..." oninput="validarMensaje()">
+              <br>           
+              <button style="margin-left:0px;" disabled id="btnEnviar" type="button" class="btn btn-primary" onclick="enviarChat()">Enviar</button>
+          
+      </form>
 </div>
 
 </body>
@@ -80,10 +51,12 @@
 
 
 <script>
+  /*
   window.onload = function() {
     socket.on('productos',data => {
     renderTable(data)
  });
 
 };
+*/
 </script>

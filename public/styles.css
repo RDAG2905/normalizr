@@ -11,12 +11,15 @@ th{
 }
 
 td {
-    min-width:200px;
-    border-bottom: 1px solid gray;
+    min-width:190px;   
 }
 
 #lista{
     vertical-align: middle;
+}
+
+#mensajes{
+    margin-left: 10px;
 }
 
 #tableContainer *{
@@ -33,4 +36,5 @@ td {
     border-radius: 4px;
     padding-left:50px;
     padding-right:50px;
+    min-width: 600px;
 }

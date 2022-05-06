@@ -1,19 +1,24 @@
 {
-  "name": "SQLWebSocketsProductosHbsFrontYChat",
+  "name": "faker-normalizr",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
+    "config": "^3.3.7",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "handlebars": "^4.7.7",
     "knex": "^1.0.3",
+    "mongoose": "^6.3.2",
     "mysql": "^2.18.1",
+    "normalizr": "^3.6.2",
     "socket.io": "^4.4.1",
     "sqlite3": "^5.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@faker-js/faker": "^6.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

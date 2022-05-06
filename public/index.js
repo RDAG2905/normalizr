@@ -1,4 +1,11 @@
 
+/*const normalizr  = require("normalizr")
+const normalize = normalizr.normalize
+const denormalize = normalizr.denormalize
+const schema = normalizr.schema*/ 
+
+//const { schema } = require("../models/Mensajes")
+
 const socket = io.connect()
 
 const Enviar = ()=>{
@@ -16,6 +23,7 @@ const Enviar = ()=>{
  }
 
 
+
 const renderProducts = (productos) =>{
     const temphbs = document.querySelector("#lista").innerHTML
     const template = Handlebars.compile(temphbs)
@@ -23,10 +31,12 @@ const renderProducts = (productos) =>{
     document.querySelector('#lista').innerHTML = template({productos}); 
   }
 
+
    
   socket.on('productos',data => {
    renderTable(data)
  });
+
 
 
  function renderTable(productos) {
@@ -41,50 +51,73 @@ const renderProducts = (productos) =>{
  
 
 function makeHtmlList(mensajes) {
- 
+ console.log(mensajes)
   const divMensajes = document.querySelector('#mensajes')
   let lista = []
   
    mensajes.forEach(mensaje => {
       let msg = (`
-          <tr style='width:400px;height:50px;'>
-              <td style="color:blue;width:50px;">${mensaje.email}</td>
-              <td style="color:brown;width:60px;text-align:left">[${mensaje.fechayHora}]:</td>
-              <td style="color:green;text-align:left">${mensaje.mensaje}</td>
+          <tr style='width:350px;height:30px;'>
+              <td style="color:blue;width:50px;">${mensaje.autor.id}</td>
+              <td style="color:brown;width:50px;text-align:left">[${mensaje.fechayHora}]:</td>
+              <td style="color:green;text-align:left">${mensaje.texto}</td>
           </tr>
       `)
+      msg.replace(',','')
       lista.push(msg)
   })
   divMensajes.innerHTML = lista
 }
+
+
+
 socket.on('mensajes',data=>{
   makeHtmlList(data)
 })
 
+
+
+
 const enviarChat=()=>{
   let mensaje = document.querySelector("#inputMensaje").value
-  let email = document.querySelector("#inputUsername").value
-  let date =  new Date()
-  let fechayHora = date.toLocaleString() 
-  let chat = {
-  email,
-  fechayHora,
-  mensaje
+  let email = document.querySelector("#emailAutor").value
+  let nombre = document.querySelector("#nombreAutor").value
+  let apellido = document.querySelector("#apellidoAutor").value
+  let edad = document.querySelector("#edadAutor").value
+  let alias = document.querySelector("#aliasAutor").value
+  let avatar = document.querySelector("#avatarAutor").value
+ 
+  let autor = {
+    id:email,
+    nombre:nombre,
+    apellido:apellido,
+    edad:edad,
+    alias:alias,
+    avatar:avatar
   }
+ 
+  let chat = {
+      autor:autor,
+      texto:mensaje
+  }
+  
   socket.emit("chateando",chat)
 }
+ 
 
 
 function isValidEmail(mail) { 
   return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
 }
 
+
 function isValidInput(input){
  return input.length > 0
 }
 
+
 const verificar = ()=>{
-  let valor = document.querySelector('#inputUsername').value
+  let valor = document.querySelector('#emailAutor').value
   let cartel = document.querySelector('#showAlert')
   let inputMensaje = document.querySelector('#inputMensaje')
   let btnEnviar = document.querySelector('#btnEnviar')
@@ -99,6 +132,7 @@ const verificar = ()=>{
   }
   
 }
+
 const showError= ()=> {}
 const hideError= ()=> {}
   
@@ -111,15 +145,3 @@ const validarMensaje = ()=>{
     btnEnviar.disabled = true
   }
 }
-/*
-inputUsername.addEventListener('input', () => {
-  const hayEmail = inputUsername.value.length
-  const hayTexto = inputMensaje.value.length
-  inputMensaje.disabled = !hayEmail
-  btnEnviar.disabled = !hayEmail || !hayTexto
-})
-
-inputMensaje.addEventListener('input', () => {
-  const hayTexto = inputMensaje.value.length
-  btnEnviar.disabled = !hayTexto
-})*/
