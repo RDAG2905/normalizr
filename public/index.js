@@ -2,7 +2,7 @@
 
 const socket = io.connect()
 
-//let normalizr = new normalizr.schema.Entity()
+//let normalizador = new normalizr.schema.Entity
  // let informacion = normalizr.denormalize(mensajes.result,,mensajes.entities)
 
 const Enviar = ()=>{

@@ -28,12 +28,6 @@ const mensajeSchema = new mongoose.Schema({
     publicacion : publicacionSchema
 })
 
-/* 
-const mensajeSchema = new mongoose.Schema({
-    autor: autorSchema,
-    texto : {type: String, max: 100},
-    fechayHora: {type: Date,default: Date.now}
-})
-*/
+
 
 module.exports = mongoose.model(mensajesCollection, mensajeSchema);
