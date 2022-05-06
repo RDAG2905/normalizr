@@ -12,6 +12,7 @@ th{
 
 td {
     min-width:190px;   
+    
 }
 
 #lista{
@@ -21,6 +22,7 @@ td {
 #mensajes{
     margin-left: 10px;
 }
+
 
 #tableContainer *{
     margin-left: -20%;

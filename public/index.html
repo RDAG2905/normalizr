@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="index.js?v=1"></script>
-  <script src = "https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+  <script src = "https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -41,7 +41,8 @@
               <input disabled id="inputMensaje" type="text" class="form-control input-xs"
               placeholder="Ingresá un mensaje..." oninput="validarMensaje()">
               <br>           
-              <button style="margin-left:0px;" disabled id="btnEnviar" type="button" class="btn btn-primary" onclick="enviarChat()">Enviar</button>
+              <button style="margin-left:15px;"
+               disabled id="btnEnviar" type="button" class="btn btn-primary" onclick="enviarChat()">Enviar</button>
           
       </form>
 </div>

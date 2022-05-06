@@ -2,6 +2,9 @@
 
 const socket = io.connect()
 
+//let normalizr = new normalizr.schema.Entity()
+ // let informacion = normalizr.denormalize(mensajes.result,,mensajes.entities)
+
 const Enviar = ()=>{
    let nombre = document.querySelector('#nombre').value
    let precio = document.querySelector('#precio').value
@@ -48,7 +51,7 @@ function makeHtmlList(mensajes) {
  console.log(mensajes)
   const divMensajes = document.querySelector('#mensajes')
   let lista = []
-  
+ 
    mensajes.forEach(mensaje => {
       let msg = (`
           <tr style='width:350px;height:30px;'>
@@ -95,15 +98,11 @@ const enviarChat=()=>{
     id:email
   }
   let chat = {
+    id:email,
     autor:autor,
     publicacion:publicacion
 }
- /* 
-  let chat = {
-      autor:autor,
-      texto:mensaje
-  }
-  */
+ 
   socket.emit("chateando",chat)
 }
  

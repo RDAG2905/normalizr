@@ -23,6 +23,7 @@ const autorSchema = new mongoose.Schema({
 
 
 const mensajeSchema = new mongoose.Schema({
+    id: {type: String,max: 50},
     autor: autorSchema,
     publicacion : publicacionSchema
 })

@@ -35,19 +35,21 @@ app.use('/api',routerProductos)
 
 const autorSchema = new schema.Entity('autor')
 const publicacionSchema = new schema.Entity('publicacion')
-//const autorSchema = new schema.Entity('autor',{},{idAttribute: 'email'})
-//const publicacionSchema = new schema.Entity('publicaciones')
 
-/*const mensajeSchema = new schema.Entity('mensajes',
-{},{idAttribute: 'email'}
-  )*/
-
-const mensajeSchema = new schema.Entity('mensajes',{
-  autor : [autorSchema],
-  publicacion : [publicacionSchema]
+const autores = new schema.Entity('autores',{
+    users:[autorSchema],
 })
 
-/*const chatSchema = new schema.Entity('chats',{
+const chats = new schema.Entity('publicaciones',{
+    chats:[publicacionSchema],
+})
+
+const mensajeSchema = new schema.Entity('mensajes',{
+  autores : autores,
+  publicaciones : chats
+})
+/* 
+const chatSchema = new schema.Entity('chats',{
  chats:[mensajeSchema]
 })*/
 
@@ -64,7 +66,7 @@ const chatSchema = new schema.Values(mensajeSchema)
                                //.finally(()=>dao.disconnect())
         
         socket.on('chateando',async (chat)=>{   
-            //console.log(`chat: ${util.inspect(chat,false,12,true)}`)      
+                
               dao.save(chat)
                         .then(id => 
                             dao.getAll()

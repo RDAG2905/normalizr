@@ -13,7 +13,7 @@ class DaoFaker{
         for (let index = 0; index < this.cantidad; index++) {
             let name = faker.commerce.productName()
             let price = faker.commerce.price()
-            let image = faker.image.business()
+            let image = faker.image.imageUrl()
             
             let product = {
                 nombre : name,
